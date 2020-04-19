@@ -94,7 +94,7 @@ PythonshellInNode.prototype.onInput = function(msg, out, err) {
       }
     }
 
-    this.standbyTimer = setTimeout(()=>{
+    this.standbyTimer = setTimeout(() => {
       this.onStatus({fill:"green",shape:"dot",text:"Standby"})
     }, 2000)
 
@@ -110,7 +110,7 @@ PythonshellInNode.prototype.onInput = function(msg, out, err) {
   py.stdin.on('error', console.log)
   py.on('error', console.log)
 
-  py.on('close', code =>{
+  py.on('close', code => {
     if (code){
       err('exit code: ' + code + ', ' + errString);
       this.onStatus({fill:"red",shape:"dot",text:"Exited: " + code})
@@ -122,7 +122,7 @@ PythonshellInNode.prototype.onInput = function(msg, out, err) {
       this.onStatus({fill:"yellow",shape:"dot",text:"Script Closed"})
     }
     this.py = null
-    setTimeout(()=>{
+    setTimeout(() => {
       this.onStatus({})
     }, 2000)
   });
@@ -143,5 +143,4 @@ PythonshellInNode.prototype.setStatusCallback = function(callback) {
   this.onStatus = callback
 };
 
-
-module.exports = PythonshellInNode
+module.exports = PythonshellInNode;
